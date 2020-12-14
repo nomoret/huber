@@ -1,11 +1,11 @@
-import { Greeting } from "src/types/graphql";
+import { SayHelloQueryArgs, SayHelloResponse } from "src/types/graphql";
 
 const resolvers = {
   Query: {
-    sayHello: (): Greeting => {
+    sayHello: (_, args: SayHelloQueryArgs): SayHelloResponse => {
       return {
         error: false,
-        text: "Hey hello how are you",
+        text: `hello! ${args.name}`,
       };
     },
   },
