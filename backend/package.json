@@ -9,6 +9,8 @@
     "types": "graphql-to-typescript ./src/schema.graphql ./src/types/graphql.d.ts"
   },
   "dependencies": {
+    "bcrypt": "^5.0.0",
+    "class-validator": "^0.12.2",
     "cors": "^2.8.5",
     "dotenv": "^8.2.0",
     "graphql-tools": "^7.0.2",
@@ -18,6 +20,7 @@
     "typeorm": "^0.2.29"
   },
   "devDependencies": {
+    "@types/bcrypt": "^3.0.0",
     "@types/cors": "^2.8.8",
     "@types/helmet": "^4.0.0",
     "@types/morgan": "^1.9.2",
