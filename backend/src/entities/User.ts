@@ -7,9 +7,15 @@ import {
   Column,
   CreateDateColumn,
   Entity,
+  ManyToOne,
+  OneToMany,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from "typeorm";
+import Chat from "./Chat";
+import Message from "./Mesaage";
+import Ride from "./Ride";
+import Verification from "./Verification";
 
 const BCRYPT_ROUND = 10;
 
@@ -56,10 +62,27 @@ class User extends BaseEntity {
 
   @Column({ type: "double precision", default: 0 })
   lastLng: number;
+
   @Column({ type: "double precision", default: 0 })
   lastLat: number;
+
   @Column({ type: "double precision", default: 0 })
   lastOrientation: number;
+
+  @ManyToOne((type) => Chat, (chat) => chat.participants)
+  chat: Chat;
+
+  @OneToMany((type) => Message, (message) => message.user)
+  messages: Message[];
+
+  @OneToMany((type) => Verification, (verification) => verification.user)
+  verficaitons: User[];
+
+  @OneToMany((type) => Ride, (ride) => ride.passenger)
+  ridesAsPassenger: Ride[];
+
+  @OneToMany((type) => Ride, (ride) => ride.driver)
+  ridesAsDriver: Ride[];
 
   @CreateDateColumn() createdAt: string;
   @UpdateDateColumn() updatedAt: string;
