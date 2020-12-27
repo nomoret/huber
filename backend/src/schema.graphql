@@ -43,6 +43,16 @@ type Ride {
   updatedAt: String
 }
 
+type EmailSignInResponse {
+  ok: Boolean!
+  error: String
+  token: String
+}
+
+type Mutation {
+  EmailSignIn(email: String!, password: String!): EmailSignInResponse!
+}
+
 type User {
   id: Int!
   email: String
