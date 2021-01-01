@@ -4,6 +4,7 @@ import {
   EmailSignUpResponse,
 } from "src/types/graphql";
 import { Resolvers } from "src/types/resolvers";
+import createJWT from "src/utils/createJWT";
 
 const resolvers: Resolvers = {
   Mutation: {
@@ -14,18 +15,19 @@ const resolvers: Resolvers = {
       const { email } = args;
       try {
         const existingUser = await User.findOne({ email });
-        if (!existingUser) {
+        if (existingUser) {
           return {
             ok: false,
             error: "You should log in instead",
             token: null,
           };
         } else {
-          await User.create({ ...args }).save();
+          const newUser = await User.create({ ...args }).save();
+          const token = createJWT(newUser.id);
           return {
             ok: true,
             error: null,
-            token: "Comming soon!",
+            token,
           };
         }
       } catch (error) {
