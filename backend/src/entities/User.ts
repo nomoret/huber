@@ -43,7 +43,7 @@ class User extends BaseEntity {
   password: string;
 
   @Column({ type: "text" })
-  phoneNumer: string;
+  phoneNumber: string;
 
   @Column({ type: "boolean", default: false })
   verifiedPhoneNumber: boolean;
