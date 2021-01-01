@@ -15,7 +15,7 @@ Uber Clone, GraphQL, Typescript, NodeJS
 ---
 
 ### Private Rseolvers:
-- [ ] Get my Profile
+- [x] Get my Profile
 - [ ] Update my Profile
 - [ ] Toggle Driving Mode
 - [ ] Report Locaiton / Orientation
